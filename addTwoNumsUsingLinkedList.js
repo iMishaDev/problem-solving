@@ -1,17 +1,5 @@
-class Node {
+import { LinkedListNode } from './helpers.js'
 
-/**
- * @constructor 
- * @param {number} value 
- * @param {object} prevNode 
- * @param {object} nextNode 
- */
-
-    constructor(value, next = null){
-        this.value = value;
-        this.next = next;
-    }
-}
 class Solution {
     static sum(firstNumber, secondNumber){
         let firstNumberCurrent = firstNumber;
@@ -21,7 +9,7 @@ class Solution {
 
         while(firstNumberCurrent || secondNumberCurrent){
             let sum = firstNumberCurrent.value + secondNumberCurrent.value;
-            let newNode = new Node(( sum % 10 ) + carry);
+            let newNode = new LinkedListNode(( sum % 10 ) + carry);
             carry = Math.floor(sum / 10);
 
             if (!currentResultNode) { 
@@ -33,10 +21,10 @@ class Solution {
 
             if(firstNumberCurrent.next || secondNumberCurrent.next){
                 if(!firstNumberCurrent.next)
-                    firstNumberCurrent.next = new Node(0);
+                    firstNumberCurrent.next = new LinkedListNode(0);
                 
                 if(!secondNumberCurrent.next)
-                secondNumberCurrent.next = new Node(0);
+                secondNumberCurrent.next = new LinkedListNode(0);
             }
             firstNumberCurrent = firstNumberCurrent.next
             secondNumberCurrent = secondNumberCurrent.next
@@ -46,8 +34,8 @@ class Solution {
     }
 }
 
-let first = new Node(1, new Node(2, new Node(3, new Node(4))))
-let second = new Node(7, new Node(7, new Node(7)))
+let first = new LinkedListNode(1, new LinkedListNode(2, new LinkedListNode(3, new LinkedListNode(4))))
+let second = new LinkedListNode(7, new LinkedListNode(7, new LinkedListNode(7)))
 
 
 

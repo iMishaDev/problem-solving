@@ -1,20 +1,5 @@
+import { TreeNode } from './helpers.js'
 
-class Node {
-
-
-/**
- * @constructor 
- * @param {number} value 
- * @param {Node} leftChild 
- * @param {Node} rightChild 
- */
-
-    constructor(value, leftChild=null, rightChild=null){
-        this.value = value
-        this.leftChild = leftChild
-        this.rightChild = rightChild
-    }
-}
 class Solution {
     static isValidBSTRecursive(root){
         return this.#isValidBSTHelper(root, Number.MIN_VALUE, Number.MAX_VALUE);
@@ -29,13 +14,13 @@ class Solution {
     }
 }
 
-const validBinaryTree = new Node(10,
-                    new Node(5, new Node(4,null), new Node(8, null)),
-                    new Node(20, new Node(18,null),new Node(24, null)));
+const validBinaryTree = new TreeNode(10,
+                    new TreeNode(5, new TreeNode(4,null), new TreeNode(8, null)),
+                    new TreeNode(20, new TreeNode(18,null),new TreeNode(24, null)));
 
-const invalidBinaryTree = new Node(10,
-                    new Node(5, new Node(4,null), new Node(8, null)),
-                    new Node(20, new Node(2,null),new Node(24, null)));
+const invalidBinaryTree = new TreeNode(10,
+                    new TreeNode(5, new TreeNode(4,null), new TreeNode(8, null)),
+                    new TreeNode(20, new TreeNode(2,null),new TreeNode(24, null)));
 
 
 console.log(validBinaryTree)
