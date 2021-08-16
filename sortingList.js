@@ -1,6 +1,8 @@
+import { createSheet } from './helpers.js'
+
 class Solution {
     static sort_1(numbers){
-        let numSheet = this.#createSheet(numbers);
+        let numSheet = createSheet(numbers);
         let sortedNumbers = [];
         numbers.forEach((number) => {
             numSheet[number] += 1;
@@ -34,17 +36,6 @@ class Solution {
 
         }
         return numbers;
-    }
-
-    static #createSheet(array){
-        const handler = {
-            get: function(obj, prop) {
-                return prop in obj ?
-                obj[prop] :
-                0;
-            }
-            };
-        return new Proxy({}, handler);
     }
 }
 
