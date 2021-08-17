@@ -9,6 +9,20 @@ export const createSheet = (array) => {
         return new Proxy({}, handler);
     }
 
+export const negativeIndexedArray = () =>  {
+    const handler = { 
+        get(target, prop) {
+            if (!isNaN(prop)) {
+                prop = parseInt(prop, 10);
+                if (prop < 0) {
+                    prop += target.length;
+                }
+            }
+        return target[prop];
+        }
+    }
+    return new Proxy([], handler);
+}
 export class TreeNode {
 
 
