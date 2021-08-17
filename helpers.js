@@ -1,4 +1,4 @@
-export const createSheet = (array) => {
+export const createSheet = () => {
         const handler = {
             get: function(obj, prop) {
                 return prop in obj ?
