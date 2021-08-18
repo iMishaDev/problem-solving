@@ -109,17 +109,16 @@ export class Heap {
     }
 
     poll(){
-        let element = this.heap[0]
         this.heap[0] = this.heap[this.heap.length - 1]
         this.heap.length -=1
         this.#heapifyDown()
-        return element
+        return this.heap[0]
     }
 
     #heapifyUp(){
         let index = this.heap.length - 1
 
-        while(this.hasParent(index) && this.getParent(index) > this.heap[index]){
+        while(this.hasParent(index) && this.getParent(index) < this.heap[index]){
             [this.heap[this.getParentIndex(index)], this.heap[index]] =
             [this.heap[index], this.heap[this.getParentIndex(index)]]
             index = this.getParentIndex(index)
@@ -127,28 +126,38 @@ export class Heap {
     }
 
     #heapifyDown(){
-        let index = 0, smallest = 0
+        let index = 0, largest = 0
         
 
         while(this.hasLeftChild(index)){
-            smallest = this.getLeftChildIndex(index);
-            if(this.hasRightChild(index) && this.getRightChild(index) < this.getLeftChild(smallest)){
-                smallest = this.getRightChildIndex(index)
+            largest = this.getLeftChildIndex(index);
+            if(this.hasRightChild(index) && this.getRightChild(index) < this.getLeftChild(largest)){
+                largest = this.getLeftChildIndex(index)
             }
-            if(this.heap[index] < this.heap[smallest]) return
+            if(this.heap[index] > this.heap[largest]) return
             else {
-                [this.heap[smallest], this.heap[index]] =
-                [this.heap[index], this.heap[smallest]]
-                index = smallest
+                [this.heap[largest], this.heap[index]] =
+                [this.heap[index], this.heap[largest]]
+                index = largest
             }
         }
     }
 
-    findTheHighestKthElement(k){
-        let highest = [this.poll()]
+    findTheHighestKthElements(k){
+        let highest = [];
 
-        while(k-1){
+        while(k){
             highest = [...highest, this.poll()]
+            k--;
+        }
+        return highest
+    }
+
+    findTheHighestKthElement(k){
+        let highest = this.heap
+        while(k){
+            highest =  this.poll();
+            console.log(highest)
             k--;
         }
         return highest
