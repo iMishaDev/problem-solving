@@ -10,7 +10,7 @@ class Solution {
         for (const key in sheet){
             heap.add({[key]: sheet[key]});
         }
-        return heap.findTheHighestKthElement(k)
+        return heap.findTheHighestKthElements(k)
     }
 }
 
