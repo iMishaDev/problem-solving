@@ -157,7 +157,6 @@ export class Heap {
         let highest = this.heap
         while(k){
             highest =  this.poll();
-            console.log(highest)
             k--;
         }
         return highest
