@@ -17,8 +17,35 @@ class Solution {
     }
 
 
+    static threeSum_2(numbers){
+        numbers = numbers.sort((a, b) => a - b);
+        let result = [];
+        numbers.forEach((number, index) => {
+            result = [...result, ...this.#twoSum(number*-1, index+1, numbers, [])];
+        });
+
+        return result;
+    }
+
+    static #twoSum(target, index, numbers, result){
+        let front = index;
+        let back = numbers.length - 1;
+        while(front < back){
+            if(numbers[front] + numbers[back] < target)
+                front++;
+            else if(numbers[front] + numbers[back] > target)
+                back--;
+            else if(numbers[front] + numbers[back] === target){
+                result.push([numbers[front], numbers[back], target * -1]);
+                front++;
+                back--;
+            }
+        }
+        return result;
+
+    }
 
 
 }
 
-console.log('Three sum equals 0', Solution.threeSum_1([-1, 0, 1, 2, -4, -3]))
+console.log('Three sum equals 0', Solution.threeSum_2([-1, 0, 1, 2, -4, -3]))
