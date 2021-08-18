@@ -26,6 +26,26 @@ class Solution {
         this.print(head)
     }
 
+    static removeKthFromLinkedList_2(head, k){
+        let current = head; 
+        let prev = null;
+        let origin = head;
+
+        while(k > -1){
+            current = current.next;
+            k--;
+        }
+
+        while(current){
+            current = current.next;
+            origin = origin.next;
+
+        }
+        let temp = origin.next.next; 
+        origin.next = temp;
+        this.print(head)
+    }
+
     static print(head) {
         let current = head;
 
@@ -39,5 +59,5 @@ class Solution {
 let head  = new LinkedListNode(1, new LinkedListNode(2, new LinkedListNode(3, new LinkedListNode(4, new LinkedListNode(5, null)))))
 console.log(head)
 // 12345
-head = Solution.removeKthFromLinkedList_1(head, 1)
+head = Solution.removeKthFromLinkedList_2(head, 2)
 console.log(head)
