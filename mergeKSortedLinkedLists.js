@@ -1,7 +1,23 @@
 import { LinkedListNode } from './helpers.js';
 class Solution {
 
-    
+    static mergeKLinkedLists_2(lists){
+        let newList  = new LinkedListNode(-1);
+        let newHead = newList;
+        let list = [];
+        for (let head of lists){
+            while(head){
+                list.push(head)
+                head = head.next;
+            }
+        }
+        list.sort((a, b) => a.value - b.value)
+        for (const node of list ){
+            newList.next = node
+            newList = newList.next;
+        }
+        return newHead.next;
+    }
 
 
     static mergeKLinkedLists(lists){
@@ -39,7 +55,9 @@ class Solution {
 let head1  = new LinkedListNode(1, new LinkedListNode(3, new LinkedListNode(5, null)))
 let head2  = new LinkedListNode(2, new LinkedListNode(4, new LinkedListNode(6, null)))
 
-
+let head3  = new LinkedListNode(1, new LinkedListNode(3, new LinkedListNode(5, null)))
+let head4  = new LinkedListNode(2, new LinkedListNode(4, new LinkedListNode(6, null)))
 // 12345
 
 console.log('Merging two LinkedLists ',  Solution.print(Solution.mergeKLinkedLists([head1, head2])))
+console.log('Merging two LinkedLists ',  Solution.print(Solution.mergeKLinkedLists_2([head3, head4])))
