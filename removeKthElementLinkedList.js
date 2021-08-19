@@ -28,7 +28,6 @@ class Solution {
 
     static removeKthFromLinkedList_2(head, k){
         let current = head; 
-        let prev = null;
         let origin = head;
 
         while(k > -1){
