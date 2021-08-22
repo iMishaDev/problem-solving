@@ -19,6 +19,24 @@ class Solution {
 
         return leastPositive;
     }
+
+
+    static findFirstMissingPositiveInteger_2(numbers){
+        let visited = {};
+        let leastPositive = 1;
+
+        for (const number of numbers){
+            visited[number] = 1;
+        }
+
+        for(const number of numbers){
+            if(!visited[leastPositive])
+                return leastPositive;
+            else leastPositive += 1;
+        }
+
+        return leastPositive;
+    }
 }
 
-console.log('find the first missing positive integer', Solution.findFirstMissingPositiveInteger([5,2,6,3,4,-1,1]))
+console.log('find the first missing positive integer', Solution.findFirstMissingPositiveInteger_2([5,2,6,3,4,-1,1]))
