@@ -13,9 +13,18 @@ class Solution {
             if(node.leftChild)
                 stack.push(node.leftChild);
         }
+        return inverted;
+    }
 
-        return inverted
-        
+    static invertBTRecursive(root){
+        if(!root) return;
+        let left = this.invertBTRecursive(root.leftChild);
+        let right = this.invertBTRecursive(root.rightChild);
+
+        root.leftChild = right;
+        root.rightChild = left;
+
+        return root;
     }
 }
 
@@ -25,4 +34,4 @@ const node = new TreeNode(10,
                     new TreeNode(20, 
                         new TreeNode(18,null),new TreeNode(24, null)));
 console.log(node)
-console.log('Invert BT ', Solution.invertBT(node))
+console.log('Invert BT ', Solution.invertBTRecursive(node))
