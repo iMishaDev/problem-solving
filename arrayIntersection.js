@@ -22,6 +22,18 @@ class Solution {
     }
 
 
+    static findIntersections_1(arr1, arr2){
+        let set1 = new Set(arr1);
+        let set2 = new Set(arr2);
+        let results = [];
+
+        for (const [key, value] of set1.entries()){
+            if(set2.has(value))
+                results.push(value)
+        }
+
+        return results;
+    }
 }
 
-console.log('intersections between two arrays', Solution.findIntersections([4, 9, 5], [9, 4, 9, 8, 4]))
+console.log('intersections between two arrays', Solution.findIntersections_1([4, 9, 5], [9, 4, 9, 8, 4]))
