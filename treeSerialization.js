@@ -12,7 +12,23 @@ class Solution {
 
     }
     static deserialize(str){
-    
+        return this.#deserializeHelper(str.split(','));
+    }
+
+    static #deserializeHelper(chars){
+        if(chars.length === 0)
+            return;
+        
+        if(chars[0] === '/' || chars[0] === ''){
+            chars.shift()
+            return null;
+        }
+        
+        let node = new TreeNode(chars.shift());
+        node.leftChild = this.#deserializeHelper(chars);
+        node.rightChild = this.#deserializeHelper(chars);
+
+        return node;
     }
 }
 
