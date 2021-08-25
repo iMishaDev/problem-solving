@@ -20,7 +20,6 @@ class Solution {
                 firstLetterSheet[word[0]].push(word);
             else firstLetterSheet[word[0]] = [word];
         }
-        console.log(firstLetterSheet)
         return this.#canChainHelper(firstLetterSheet, words[0], words[0], words.length, new Set());
     }
 
