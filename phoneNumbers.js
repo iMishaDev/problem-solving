@@ -12,7 +12,7 @@ const lettersMaps = {
         }
 
 let validWords = ['dog', 'fish', 'cat', 'fog'];
-
+let validWordsSet = new Set(['dog', 'fish', 'cat', 'fog']);
 class Solution {
     static makeWords(numbers){
         let validWords = ['dog', 'fish', 'cat', 'fog'];
@@ -34,7 +34,7 @@ class Solution {
     static #makeWords_Helper(numbers, letters){
         if(numbers.length < 1){
             let word = letters.join('');
-            if(validWords.includes(word))
+            if(validWordsSet.has(word))
                 return [word];
             return [];
         }
