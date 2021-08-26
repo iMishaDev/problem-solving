@@ -40,6 +40,44 @@ class Solution {
     }
 
 
+    static partitioning(numbers, left, right){
+        let pivot = numbers[right];
+        let i = left; 
+
+        for (let j =0; j < numbers.length; j++){
+            if(numbers[j] <= pivot){
+                [numbers[i],  numbers[j]] = [numbers[j],  numbers[i]];
+                i += 1;
+            }
+        }
+        [numbers[i],  numbers[right]] = [numbers[right],  numbers[i]];
+
+        return i;
+    }
+
+    /**
+     * find the Kth element using Quick Sort 
+     * @param {Array} numbers 
+     * @param {Integer} k 
+     * @returns 
+     */
+    static iterativeFindKthElement_3(numbers, k){
+        k = numbers.length - k;
+        let left  = 0;
+        let right = numbers.length - 1;
+
+        while(left < right){
+            let pivot = this.partitioning(numbers, left, right)
+            if(pivot === k)
+                return numbers[pivot];
+            else if(pivot > k){
+                right = pivot - 1;
+            } else {
+                left = pivot + 1;
+            }
+        }
+        return -1;
+    }
 }
 
 
