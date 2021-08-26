@@ -1,4 +1,4 @@
-import { TreeNode } from './helpers.js'
+import { BinaryTreeNode } from './helpers.js'
 
 class Solution {
     static isValidBSTRecursive(root){
@@ -14,13 +14,13 @@ class Solution {
     }
 }
 
-const validBinaryTree = new TreeNode(10,
-                    new TreeNode(5, new TreeNode(4,null), new TreeNode(8, null)),
-                    new TreeNode(20, new TreeNode(18,null),new TreeNode(24, null)));
+const validBinaryTree = new BinaryTreeNode(10,
+                    new BinaryTreeNode(5, new BinaryTreeNode(4,null), new BinaryTreeNode(8, null)),
+                    new BinaryTreeNode(20, new BinaryTreeNode(18,null),new BinaryTreeNode(24, null)));
 
-const invalidBinaryTree = new TreeNode(10,
-                    new TreeNode(5, new TreeNode(4,null), new TreeNode(8, null)),
-                    new TreeNode(20, new TreeNode(2,null),new TreeNode(24, null)));
+const invalidBinaryTree = new BinaryTreeNode(10,
+                    new BinaryTreeNode(5, new BinaryTreeNode(4,null), new BinaryTreeNode(8, null)),
+                    new BinaryTreeNode(20, new BinaryTreeNode(2,null),new BinaryTreeNode(24, null)));
 
 
 console.log(validBinaryTree)

@@ -1,4 +1,4 @@
-import { TreeNode, Queue } from './helpers.js';
+import { BinaryTreeNode, Queue } from './helpers.js';
 class Solution {
     
 
@@ -14,10 +14,10 @@ class Solution {
         ...this.#getValuesHelper(root.rightChild, currentDepth + 1, targetDepth)];
     }
 }
-const node = new TreeNode(10,
-                    new TreeNode(5,
-                        new TreeNode(4,null), new TreeNode(8, null)),
-                    new TreeNode(20, 
-                        new TreeNode(18,null),new TreeNode(24, null)));
+const node = new BinaryTreeNode(10,
+                    new BinaryTreeNode(5,
+                        new BinaryTreeNode(4,null), new BinaryTreeNode(8, null)),
+                    new BinaryTreeNode(20, 
+                        new BinaryTreeNode(18,null),new BinaryTreeNode(24, null)));
 
 console.log('get values in depth ', Solution.getAllValuesInDepth(node, 2));

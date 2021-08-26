@@ -1,4 +1,4 @@
-import { TreeNode } from './helpers.js';
+import { BinaryTreeNode } from './helpers.js';
 class Solution {
     static getCount(root){
         return this.#getCountHelper(root);
@@ -19,11 +19,11 @@ class Solution {
         return [leftResult[0] + rightResult[0], false]
     }
 }
-const node = new TreeNode(0,
-                    new TreeNode(1, null),
-                    new TreeNode(0, 
-                        new TreeNode(0,null),
-                        new TreeNode(1, 
-                            new TreeNode(1,null),
-                            new TreeNode(1, null))));
+const node = new BinaryTreeNode(0,
+                    new BinaryTreeNode(1, null),
+                    new BinaryTreeNode(0, 
+                        new BinaryTreeNode(0,null),
+                        new BinaryTreeNode(1, 
+                            new BinaryTreeNode(1,null),
+                            new BinaryTreeNode(1, null))));
 console.log('get count of unival subtrees', Solution.getCount(node))

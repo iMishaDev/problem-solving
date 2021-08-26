@@ -1,4 +1,4 @@
-import { TreeNode } from './helpers.js';
+import { BinaryTreeNode } from './helpers.js';
 
 class Solution {
     static maxDepth(root){
@@ -17,23 +17,23 @@ class Solution {
     }
 }
 
-const node = new TreeNode(0,
-                    new TreeNode(1, null),
-                    new TreeNode(0, 
-                        new TreeNode(0,null),
-                        new TreeNode(1, 
-                            new TreeNode(1,null),
-                            new TreeNode(1, null))));
-let n = new TreeNode(1)
-n.leftChild = new TreeNode(2)
-n.rightChild = new TreeNode(3)
-n.leftChild.leftChild = new TreeNode(4)
+const node = new BinaryTreeNode(0,
+                    new BinaryTreeNode(1, null),
+                    new BinaryTreeNode(0, 
+                        new BinaryTreeNode(0,null),
+                        new BinaryTreeNode(1, 
+                            new BinaryTreeNode(1,null),
+                            new BinaryTreeNode(1, null))));
+let n = new BinaryTreeNode(1)
+n.leftChild = new BinaryTreeNode(2)
+n.rightChild = new BinaryTreeNode(3)
+n.leftChild.leftChild = new BinaryTreeNode(4)
 
-const node2 = new TreeNode(0,
-                    new TreeNode(1, new TreeNode(1, null)),
-                    new TreeNode(0, null)); 
+const node2 = new BinaryTreeNode(0,
+                    new BinaryTreeNode(1, new BinaryTreeNode(1, null)),
+                    new BinaryTreeNode(0, null)); 
                     
-const node3 = new TreeNode(0, new TreeNode(1, null), null);  
+const node3 = new BinaryTreeNode(0, new BinaryTreeNode(1, null), null);  
 console.log('max depth of a tree', Solution.maxDepth(node))
 console.log('max depth of a tree', Solution.maxDepth(node2))
 console.log('max depth of a tree', Solution.maxDepth(n))
