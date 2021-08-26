@@ -23,7 +23,7 @@ export const negativeIndexedArray = () =>  {
     }
     return new Proxy([], handler);
 }
-export class BinaryBinaryTreeNode {
+export class BinaryTreeNode {
 
 
 /**
