@@ -58,6 +58,23 @@ export class TreeNode {
 }
 
 
+export class TrieNode {
+
+
+/**
+ * @constructor 
+ * @param {number} value 
+ * @param {Set} children 
+ * @param {Boolean} isWord 
+ */
+
+    constructor(value, isWord=false, children=[]){
+        this.value = value
+        this.isWord = isWord;
+        this.children = children
+    }
+}
+
 export class Queue {
     constructor(){
         this.queue = [];
