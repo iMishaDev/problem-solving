@@ -1,31 +1,42 @@
+import { createSheet } from './helpers.js'
 class Solution {
     static findAnagrams(text, anagram){
-        function hashFun(word){
-            let letters = word.split('');
-            let wordValue = 0;
-            for (const letter of letters){
-                wordValue += letter.charCodeAt(0);
-            }
-            return wordValue;
-        }
-
-        let anagramValue = hashFun(anagram);
-        let start = 0 ;
-        let end = 0; 
-        let letters = text.split('');
-        let windowText = '';
+        let sheet = createSheet();
+        let iterator = 0; 
         let results = [];
         
-        while(end < letters.length){
-            windowText = letters.slice(start, end+1).join('')
-            if(hashFun(windowText) === anagramValue) {
-                results.push(start);
-            }
-            end += 1;
-            if(end - start >= 3){
-                start += 1;
-            }
+        for (const letter of anagram.split('')){
+            sheet[letter] = 1;
         }
+        console.log(sheet)
+        console.log('text', text)
+        console.log('anagram length', anagram.length)
+        while(iterator < text.length){
+            console.log('out of if', sheet)
+
+            if (iterator >= anagram.length){
+                console.log('iterator', iterator)
+                let c_old = text[iterator - anagram.length]
+                console.log('text', text)
+                console.log('c_old', c_old)
+                console.log('inside sheet', sheet)
+                sheet[c_old] += 1
+                console.log('inside sheet', sheet)
+                if (sheet[c_old] == 0)
+                    delete sheet[c_old]
+                console.log('inside sheet', sheet)
+            }
+
+            sheet[text[iterator]] -= 1
+            if(sheet[text[iterator]] == 0)
+                delete sheet[text[iterator]];
+
+            if (Object.keys(sheet).length == 0){
+                results.push((iterator - anagram.length) + 1)
+            }
+            iterator += 1
+        }
+
         return results;
     }
 }
