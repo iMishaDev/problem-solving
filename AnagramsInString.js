@@ -34,6 +34,7 @@ class Solution {
             if (Object.keys(sheet).length == 0){
                 results.push((iterator - anagram.length) + 1)
             }
+            console.log('while end ', sheet)
             iterator += 1
         }
 
