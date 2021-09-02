@@ -1,35 +1,40 @@
 import { BinaryTreeNode } from './helpers.js';
 
 class Solution {
-    static inOrderSuccessor(root, target){
-        return this.#inOrderSuccessorHelper(root, root.value, target);
+    static inOrderSuccessor(root){
+        return this.#inOrderSuccessorHelper(root);
     }
 
-    static #inOrderSuccessorHelper(root, largest, target){
-        if(!root)
-            return -1;
+    static #inOrderSuccessorHelper(root){
+        if(!root.parent)
+            return root.value;
+        
+        if(root.value < root.parent.value)
+            return root.parent.value;
 
-        if(root.leftChild && root.leftChild.value === target)
-            if(root.value > root.leftChild.value)
-                return root.value;
-            else return largest;
-
-        if(root.rightChild && root.rightChild.value === target)
-            if(root.value > root.rightChild.value)
-                return root.value;
-            else return largest;
-
-
-        return Math.max(this.#inOrderSuccessorHelper(root.leftChild, Math.max(root.value, largest), target),
-        this.#inOrderSuccessorHelper(root.rightChild, Math.max(root.value, largest), target))
+        
+        return  Math.max(root.parent.value, this.#inOrderSuccessorHelper(root.parent));
+        
     }
 }
 
 
-const tree1 = new BinaryTreeNode(4,
-                    new BinaryTreeNode(2, new BinaryTreeNode(1, null), null),
-                    new BinaryTreeNode(8, 
-                        new BinaryTreeNode(5, null, new BinaryTreeNode(7,null)),
-                        new BinaryTreeNode(9, null)));
-console.log(Solution.inOrderSuccessor(tree1, 1 ))
-console.log(Solution.inOrderSuccessor(tree1, 7))
+
+const tree  = new BinaryTreeNode(4)
+tree.leftChild = new BinaryTreeNode(2)
+tree.rightChild = new BinaryTreeNode(8)
+tree.leftChild.parent = tree
+tree.rightChild.parent = tree
+tree.leftChild.leftChild = new BinaryTreeNode(1)
+tree.leftChild.leftChild.parent = tree.leftChild
+tree.rightChild.rightChild = new BinaryTreeNode(7)
+tree.rightChild.rightChild.parent = tree.rightChild
+tree.rightChild.leftChild = new BinaryTreeNode(5)
+tree.rightChild.leftChild.parent = tree.rightChild
+tree.rightChild.leftChild.rightChild = new BinaryTreeNode(7)
+tree.rightChild.leftChild.rightChild.parent = tree.rightChild.leftChild
+tree.rightChild.rightChild = new BinaryTreeNode(9)
+tree.rightChild.rightChild.parent = tree.rightChild
+
+console.log(Solution.inOrderSuccessor(tree.leftChild.leftChild))
+console.log(Solution.inOrderSuccessor(tree.rightChild.leftChild.rightChild))

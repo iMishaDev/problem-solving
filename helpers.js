@@ -33,10 +33,11 @@ export class BinaryTreeNode {
  * @param {Node} rightChild 
  */
 
-    constructor(value, leftChild=null, rightChild=null){
+    constructor(value, leftChild=null, rightChild=null, parent=null){
         this.value = value
         this.leftChild = leftChild
         this.rightChild = rightChild
+        this.parent = parent
     }
 }
 
