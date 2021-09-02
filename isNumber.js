@@ -3,7 +3,7 @@ class Solution {
         let digits = number.split('');
         let isNum = true;
         for (const digit of digits){
-            if(!Number(digit) && digit !== '.' && digit !== 'e')
+            if(!Number(digit) && digit !== '.' && digit !== 'e' && digit !== '-')
                 isNum = false;
         }
 
