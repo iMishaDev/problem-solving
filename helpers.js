@@ -73,6 +73,7 @@ export class TrieNode {
         this.value = value
         this.isWord = isWord;
         this.children = children
+        this.count = 0;
     }
 }
 
