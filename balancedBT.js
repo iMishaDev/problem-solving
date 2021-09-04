@@ -1,14 +1,20 @@
 import { BinaryTreeNode } from './helpers.js';
 
 class Solution {
-    static isBalanced(node, height){
-        if(!node)
-            return height;
-        height += 1;
-        let leftHeight = this.isBalanced(node.leftChild)
-        let rightHeight = this.isBalanced(node.rightChild)
+    static isBalanced(node){
+        return this.isBalancedHelper(node, 0) !== -1
+    }
 
-        return leftHeight - rightHeight <= 1 
+    static isBalancedHelper(node){
+        if(!node)
+            return 0;
+
+        let leftHeight = this.isBalancedHelper(node.leftChild)
+        let rightHeight = this.isBalancedHelper(node.rightChild)
+
+        if(leftHeight >= 0 && rightHeight >= 0 && Math.abs(leftHeight - rightHeight) <= 1)
+            return Math.max(leftHeight, rightHeight) + 1
+        return -1;
     }
 }
 
