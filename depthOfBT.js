@@ -8,8 +8,7 @@ class Solution {
     static #depthOfBTHelper(root, step){
         if(!root)
             return step;
-        step++;
-        return Math.max(this.#depthOfBTHelper(root.leftChild, step), this.#depthOfBTHelper(root.rightChild, step))
+        return Math.max(this.#depthOfBTHelper(root.leftChild, step +1), this.#depthOfBTHelper(root.rightChild, step +1))
     }
 }
 
