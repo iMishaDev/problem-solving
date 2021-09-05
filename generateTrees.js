@@ -1,13 +1,16 @@
-import {BinaryTreeNode} from './helpers.js'
-class Solution {
+import {BinaryTreeNode, range} from './helpers.js'
+
+
+    class Solution {
     static generate(n){
         let numbers = [];
-        for(let i = 1; i <= n; i++){
-            numbers.push(i)
-        }
+
+        for(const number of range(n))
+            numbers.push(number)
         return this.gen(numbers).map((tree) => this.dfs(tree));
     }
 
+    
     static dfs(root){
         if(!root)
             return [];
