@@ -5,7 +5,7 @@ class Solution {
         let trie = this.#constructTrie(names)
         let prefixes = []
         for(const name of names){
-            prefixes.push(this.#traverseTrie(trie, name.split(''), '', 0))
+            prefixes.push(this.#traverseTrie(trie, [...name], '', 0))
         }
 
         return prefixes
@@ -28,7 +28,7 @@ class Solution {
         for(const word of words){
             let root = trie;
 
-            const letters = word.split('');
+            const letters = [...word];
             let i = 0;
             
             while(root.children.find((n) => n.value === letters[i])){

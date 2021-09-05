@@ -7,7 +7,7 @@ class Solution {
         let sheet = new Map();
         word = word.replace(/[.,\s]/g, '')
 
-        for(const letter of word.split('')){
+        for(const letter of [...word]){
             sheet.set(letter.toLowerCase(), 1);
         }
 

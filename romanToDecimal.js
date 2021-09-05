@@ -11,7 +11,7 @@ class Solution {
         };
         let result = 0;
         let i = 0;
-        let digits = number.split('');
+        let digits = [...number];
         while(i < digits.length){
             if(romanNumerals[digits[i]] < romanNumerals[digits[i + 1]])
                 result += romanNumerals[digits[i]]

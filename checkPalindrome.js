@@ -1,7 +1,7 @@
 class Solution {
     static findPalindrome(text){
         let sheet = {};
-        let letters = text.split('');
+        let letters = [...text];
         let result = '';
         let odd = '';
 

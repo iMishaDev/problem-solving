@@ -14,7 +14,7 @@ class Solution {
             i += 1
         }
 
-        for (const num of binaryNumber.split('')){
+        for (const num of [...binaryNumber]){
             if (num === '1')
                 length += 1;
             else {

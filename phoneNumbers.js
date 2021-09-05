@@ -26,7 +26,7 @@ class Solution {
     }
 
     static makeWords_2(numbers){
-        numbers = numbers.split('').map((number) =>  Number(number));
+        numbers = [...numbers].map((number) =>  Number(number));
         return this.#makeWords_Helper(numbers, [])
     }
 

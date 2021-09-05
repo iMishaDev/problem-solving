@@ -1,6 +1,6 @@
 class Solution {
     static convert(number){
-        let digits = number.split('');
+        let digits = [...number];
         let result = 0;
         let decimal = 1;
         for(let i = digits.length - 1; i > -1; i--){

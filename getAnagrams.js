@@ -5,8 +5,7 @@ class Solution {
         function hashFun(word){
             let wordValue = 0;
 
-            word = word.split('');
-            for (const letter of word){
+            for (const letter of [...word]){
                 wordValue += letter.charCodeAt(0);
             }
             return wordValue;

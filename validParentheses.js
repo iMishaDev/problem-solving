@@ -1,7 +1,7 @@
 class Solution {
     static validParentheses(text){
         let stack = [];
-        let parenthesesList = text.split('');
+        let parenthesesList = [...text];
         const shiftedParentheses = new Set(['}', ')', ']']);
 
         const shiftedParenthesesSheet =  {

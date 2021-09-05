@@ -1,8 +1,7 @@
 class Solution {
     static isNumber(number){
-        let digits = number.split('');
         let isNum = true;
-        for (const digit of digits){
+        for (const digit of [...number]){
             if(!Number(digit) && digit !== '.' && digit !== 'e' && digit !== '-')
                 isNum = false;
         }

@@ -5,7 +5,7 @@ class Solution {
             return false;
         }
         
-        let set = new Set(word.split(''));
+        let set = new Set([...word]);
 
         return set.size === word.length;
     }

@@ -5,7 +5,7 @@ class Solution {
         let iterator = 0; 
         let results = [];
         
-        for (const letter of anagram.split('')){
+        for (const letter of [...anagram]){
             sheet[letter] = 1;
         }
         console.log(sheet)

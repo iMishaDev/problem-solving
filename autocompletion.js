@@ -14,7 +14,7 @@ class Solution {
 
     static autocomplete_2(text){
         let trie = this.#constructTrie(words);
-        const letters = text.split('');
+        const letters = [...text];
         let i = 0;
             
         while(trie.children.find((n) => n.value === letters[i])){
@@ -40,7 +40,7 @@ class Solution {
         for(const word of words){
             let root = trie;
 
-            const letters = word.split('');
+            const letters = [...word];
             let i = 0;
             
             while(root.children.find((n) => n.value === letters[i])){

@@ -4,7 +4,7 @@ class Solution {
     static canWriteNoteFromMagazine(note, magazine){
         let magazineSheet = createSheet();
         let canWriteNote = true;
-        let noteLetters = note.split('');
+        let noteLetters = [...note]
 
         magazine.forEach((letter) => {
             magazineSheet[letter] +=1;

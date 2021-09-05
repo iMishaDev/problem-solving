@@ -2,7 +2,7 @@ class Solution {
     static firstRecurringCharacter(text){
         let sheet = {};
 
-        for (const letter of text.split('')){
+        for (const letter of [...text]){
             if(sheet[letter])
                 return letter;
             sheet[letter] = 1;

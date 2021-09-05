@@ -1,6 +1,6 @@
 class Solution {
     static pushDominoes_1(dominoes){
-        let dominoesList = dominoes.split('');
+        let dominoesList = [...dominoes];
         for (let i =0; i < dominoesList.length; i++){
             if (dominoesList[i] === 'R' && dominoesList[i-1] !== 'R')
                 dominoesList[i+1] = 'R';
@@ -12,7 +12,7 @@ class Solution {
 
 
     static pushDominoes_2(dominoes){
-        let dominoesList = dominoes.split('');
+        let dominoesList = [...dominoes];
         let forces = new Array(dominoesList.length).fill(0);
         let max_force = dominoesList.length;
         let result = '';
