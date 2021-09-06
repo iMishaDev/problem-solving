@@ -15,7 +15,6 @@ class Solution {
         if(p1 === matrix.length -1 && p2 === matrix[0].length - 1){
             return 1;
         }
-        console.log('object')
         if(!cache[[p1, p2]]){
             cache[[p1, p2]] = this.#pathsHelper2(matrix, p1, p2 +  1, cache) + this.#pathsHelper2(matrix, p1 + 1, p2, cache) ;
         }
