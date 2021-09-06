@@ -1,10 +1,22 @@
 class Solution {
     static paths(matrix){
-        return this.#pathsHelper(matrix, 0, 0, 0);
+        return this.#pathsHelper2(matrix, 0, 0);
     }
 
     static #insideBoundries(matrix, p1, p2){
         return p1 >= 0 && p2 >= 0 &&  p1 < matrix.length && p2 < matrix[0].length && matrix[p1][p2] !== 1;
+    }
+
+
+    static #pathsHelper2(matrix, p1, p2){
+        if(!this.#insideBoundries(matrix, p1, p2))
+            return 0;
+        
+        if(p1 === matrix.length -1 && p2 === matrix[0].length - 1){
+            return 1;
+        }
+
+        return this.#pathsHelper2(matrix, p1, p2 +  1) + this.#pathsHelper2(matrix, p1 + 1, p2) ;
     }
 
 
