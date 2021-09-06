@@ -1,6 +1,6 @@
 class Solution {
     static paths(matrix){
-        return this.#pathsHelper2(matrix, 0, 0);
+        return this.#pathsHelper2(matrix, 0, 0, {});
     }
 
     static #insideBoundries(matrix, p1, p2){
@@ -8,15 +8,18 @@ class Solution {
     }
 
 
-    static #pathsHelper2(matrix, p1, p2){
+    static #pathsHelper2(matrix, p1, p2, cache){
         if(!this.#insideBoundries(matrix, p1, p2))
             return 0;
         
         if(p1 === matrix.length -1 && p2 === matrix[0].length - 1){
             return 1;
         }
-
-        return this.#pathsHelper2(matrix, p1, p2 +  1) + this.#pathsHelper2(matrix, p1 + 1, p2) ;
+        console.log('object')
+        if(!cache[[p1, p2]]){
+            cache[[p1, p2]] = this.#pathsHelper2(matrix, p1, p2 +  1, cache) + this.#pathsHelper2(matrix, p1 + 1, p2, cache) ;
+        }
+        return cache[[p1, p2]];
     }
 
 
