@@ -54,7 +54,49 @@ class Graph {
         this.#bfs_helper(queue, visited)
     }
 
-    
+    dfs(node){
+        let stack = [node];
+        let visited = {};
+        visited[node] = 1;
+
+
+        while(stack.length){
+            let node = stack.pop();
+            console.log(node)
+            
+            for(const neighbor of this.adjacent.get(node).reverse()){
+                if(!visited[neighbor]){
+                    stack.push(neighbor)
+                    visited[neighbor] = 1;
+                }
+            }
+
+
+        }
+
+    }
+
+
+    dfs_rec(node){
+        let visited = {};
+        return this.#dfs_helper(node, visited);
+    }
+
+
+    #dfs_helper(node, visited){
+        if(!visited[node])
+            visited[node] = 1;
+        
+        console.log(node);
+
+
+        for(const neighbor of this.adjacent.get(node)){
+            if(!visited[neighbor]){
+                this.#dfs_helper(neighbor, visited)
+            }
+        }
+    }
+
 
     print(){
         let vertices = this.adjacent.keys();
