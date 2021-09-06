@@ -12,7 +12,49 @@ class Graph {
         this.adjacent.get(v2).push(v1);
     }
 
-  
+    bfs(node){
+        let queue = [node];
+        let visited = {};
+        visited[node] = 1;
+        
+        while(queue.length){
+            let node = queue.shift();
+            console.log(node);
+            for( const neighbor of this.adjacent.get(node)){
+                if(!visited[neighbor]){
+                    queue.push(neighbor)
+                    visited[neighbor] = 1;
+                }
+            }
+        }
+        
+    }
+
+
+    bfs_rec(node){
+        let queue = [node];
+        let visited = {};
+        return this.#bfs_helper(queue, visited)
+    }
+
+    #bfs_helper(queue, visited){
+
+        if(!queue.length)
+            return;
+        
+        let node = queue.shift()
+        console.log(node);
+
+        for(const neighbor of this.adjacent.get(node)){
+            if(!visited[neighbor]){
+                visited[neighbor] = 1;
+                queue.push(neighbor);
+            }
+        }
+        this.#bfs_helper(queue, visited)
+    }
+
+    
 
     print(){
         let vertices = this.adjacent.keys();
@@ -43,13 +85,13 @@ g.addEdge('E', 'F');
 g.addEdge('E', 'C');
 g.addEdge('C', 'F');
 
-g.print();
+// g.print();
 
-// g.bfs('A');
-// console.log('\n')
+g.bfs('A');
+console.log('\n')
 
 // g.dfs('A');
 
 // g.dfs_rec('A');
 
-// g.bfs_rec('A');
+g.bfs_rec('A');
