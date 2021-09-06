@@ -4,7 +4,7 @@ class Solution {
         activities.sort((a, b) => a[1] - b[1]);
         stack.push(activities[0]);
         let i = 1;
-        while(i < activities.length - 1){
+        while(i < activities.length){
             let lastActivity = stack[stack.length -1 ];
             if(activities[i][0] >= lastActivity[1]){
                 stack.push(activities[i]);
