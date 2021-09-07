@@ -27,6 +27,32 @@ class Solution {
         }
         return result;
     }
+
+
+
+    static calc_1(digits){
+        let stack = [];
+        let result = 0;
+
+        for (const digit of digits){
+            if(isNaN(digit)){
+                let n2 = stack.pop();
+                let n1 = stack.pop();
+                let r = 0;
+                
+                if(digit == '+'){
+                    r = n1 + n2;
+                }
+                else if(digit == '*')
+                    r = n1 * n2;
+                else r = n1 - n2;
+                result = r;
+                stack.push(r);
+
+            } else stack.push(digit)
+        }
+        return result;
+    }
 }
 
-console.log(Solution.calc([1, 2, 3, '+', 2, '*', '-']))
+console.log(Solution.calc_1([1, 2, 3, '+', 2, '*', '-']))
