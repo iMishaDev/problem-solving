@@ -16,12 +16,10 @@ class Solution {
     stabilize(n , numbers){
 
         numbers =  numbers.sort((a, b) => a - b )
-        let min = Math.min(
+        return Math.min(
                         numbers[n - 2] - numbers[0], 
                         numbers[n - 1] - numbers[1], 
                         numbers[n - 1] - numbers[0])
-
-        return min;
     }
 }
 
