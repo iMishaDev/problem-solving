@@ -18,8 +18,7 @@ class Solution {
         numbers =  numbers.sort((a, b) => a - b )
         return Math.min(
                         numbers[n - 2] - numbers[0], 
-                        numbers[n - 1] - numbers[1], 
-                        numbers[n - 1] - numbers[0])
+                        numbers[n - 1] - numbers[1])
     }
 }
 
