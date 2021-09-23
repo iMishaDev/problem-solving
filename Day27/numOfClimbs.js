@@ -31,7 +31,25 @@ class Solution {
     }
 
 
+    numOfUniqueV2(n, steps){
+        return this.#numOfUniqueHelperV2(n, 0,  steps, 0);
+    }
 
+    #numOfUniqueHelperV2(n, sum, steps){
+        if(sum > n)
+            return 0;
+        
+        if(sum === n)
+            return 1;
+        let count = 0;
+        
+        for (const step of steps){
+            count += this.#numOfUniqueHelperV2(n, sum + step, steps)
+        }
+
+        return count;
+    }
 }
 
 console.log(new Solution().numOfUnique(4))
+console.log(new Solution().numOfUniqueV2(4, [1, 3, 5]))
