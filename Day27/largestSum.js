@@ -34,7 +34,20 @@ class Solution {
         return sum;
     }
 
+    largestSumRec(numbers){
+        return this.#largestHelper(numbers, 0, 0);
+    }
+
+    #largestHelper(numbers, current, sum){
+        if(current > numbers.length)
+            return 0;
+        
+        sum += numbers[current] + this.#largestHelper(numbers, current + 2, sum)
+
+        return sum;
+    }
 }
 
 console.log(new Solution().largestSum([2, 4, 6, 2, 5, 4, 3, 2, 1]))
+console.log(new Solution().largestSumRec([2, 4, 6, 2, 5]))
 console.log(new Solution().largestSum([5, 1, 1, 5]))
