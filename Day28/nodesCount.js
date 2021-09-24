@@ -12,7 +12,28 @@ class Solution {
         return 1 + this.count(root.leftChild) + this.count(root.rightChild);
     }
 
+    getDeepest(root){
+        return this.#getDeepestHelper(root, 0);
+    }
+
+
+    #getDeepestHelper(root, height){
+        if(!root.leftChild  && !root.rightChild)
+            return [root, height];
     
+        let rightChild, rightHeight = null;
+        let leftChild, leftHeight = null;
+
+        if(root.rightChild)
+            [rightChild, rightHeight] =  this.#getDeepestHelper(root.rightChild, height + 1);
+
+        if(root.leftChild)
+            [leftChild, leftHeight] = this.#getDeepestHelper(root.leftChild, height + 1);
+        
+        if(rightHeight >= leftHeight){
+            return [rightChild, rightHeight];
+        } else return [leftChild, leftHeight];
+    }
 
 }
 const root = new BinaryTreeNode(10,
@@ -28,5 +49,7 @@ const root3 = new BinaryTreeNode(10,
 
 
 console.log(new Solution().count(root))
-
+console.log(new Solution().getDeepest(root))
+console.log(new Solution().getDeepest(root2))
+console.log(new Solution().getDeepest(root3))
 
