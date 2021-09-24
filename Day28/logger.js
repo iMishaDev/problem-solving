@@ -9,18 +9,24 @@ You should be as efficient with time and space as possible.
  */
 
 class Logger {
-    #logs = [];
+    #logs;
+    constructor(n){
+        this.#logs = new Array(n);
+        this.current = 0;
+        this.size = n;
+    }
 
     record(id){
-        this.#logs.push(id);
+        this.#logs[this.current] = id;
+        this.current = (this.current + 1) % this.size;
     }
 
     getLast(i){
-        return this.#logs[this.#logs.length - i];
+        return this.#logs[Math.abs(this.current - i)];
     }
 }
 
-let logger = new Logger();
+let logger = new Logger(4);
 
 logger.record(1)
 logger.record(2)
