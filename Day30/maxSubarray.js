@@ -39,6 +39,32 @@ class Solution {
 
         return maxes;
     }
+
+
+
+    maxSubArrayV2(arr, k){
+        let currentMax = Number.MIN_VALUE;
+        let r = [];
+        let end = 0;
+        let start = 0;
+        let maxes = [];
+
+        while(end <= arr.length){
+            if(end - start === k ){
+                currentMax = Math.max(...r);
+                maxes.push(currentMax);
+                start += 1;
+                r.shift();
+            }
+
+            r.push(arr[end])
+
+            end += 1;
+        }
+
+        return maxes;
+    }
 }
 
 console.log(new Solution().maxSubArray([10, 5, 2, 7, 8, 7], 3))
+console.log(new Solution().maxSubArrayV2([10, 5, 2, 7, 8, 7], 3))
