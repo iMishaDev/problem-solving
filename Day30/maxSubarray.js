@@ -26,7 +26,6 @@ class Solution {
         while(end < arr.length){
             currentMax = Math.max(currentMax, arr[end]);
             if(end - start === k - 1){
-                currentMax = Math.max(currentMax, arr[end]);
                 maxes.push(currentMax);
                 start += 1;
                 end = start;
