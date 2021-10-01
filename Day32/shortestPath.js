@@ -27,7 +27,8 @@ class Solution {
         && row < matrix.length 
         && col >= 0 
         && col < matrix[0].length 
-        && matrix[row][col] !== 1;
+        && matrix[row][col] !== 1
+        && !visited[[row, col]];
     }
 
 
@@ -43,6 +44,8 @@ class Solution {
             if(xPoint === xEnd && yPoint === yEnd)
                 return steps;
             
+            visited[[xPoint, yPoint]] = 1;
+
             for(const [x, y] of [[0, 1], [1 , 0], [-1, 0], [0, -1]]){
                 if(this.isValid(matrix, xPoint + x, yPoint + y, visited)){
                     stack.push([xPoint + x, yPoint + y, steps + 1])
