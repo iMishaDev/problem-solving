@@ -36,11 +36,13 @@ class Solution {
         let stack = [[...start, 0]];
         let [xEnd, yEnd] = end;
         let visited = {};
-        let i = 0;
+
         while(stack.length){
             let [xPoint, yPoint, steps] = stack.shift();
+            
             if(xPoint === xEnd && yPoint === yEnd)
                 return steps;
+            
             for(const [x, y] of [[0, 1], [1 , 0], [-1, 0], [0, -1]]){
                 if(this.isValid(matrix, xPoint + x, yPoint + y, visited)){
                     stack.push([xPoint + x, yPoint + y, steps + 1])
