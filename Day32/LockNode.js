@@ -35,16 +35,24 @@ class Solution {
     }
 
     lock(node){
+        if(node.isLocked)
+            return false; // already locked
+        
         if(this.isLockable(node)){
             node.isLocked = true;
-        }
+            return true;
+        } else return false;
     }
 
 
     unlock(node){
+        if(!node.isLocked)
+            return false; // already unlocked
+        
         if(this.isLockable(node)){
             node.isLocked = false;
-        }
+            return true;
+        } else return false;
     }
 
     ancestors(node){
@@ -71,7 +79,6 @@ class Solution {
 
 
 const tree  = new BinaryTreeNode(4)
-tree.isLocked = true;
 tree.left = new BinaryTreeNode(2)
 tree.right = new BinaryTreeNode(8)
 tree.left.parent = tree
