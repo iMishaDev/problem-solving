@@ -30,7 +30,26 @@ class Solution {
         
         return stack.length == 0;
     }
+
+
+    isBalancedV2(brackets){
+        let stack = [];
+        let br = {')': '(', '}': '{', ']':'['};
+
+        for(const element of brackets){
+            if(element === '(' || element === '[' || element === '{')
+                stack.push(element);
+            else if (br[element] === stack[stack.length - 1])
+                stack.pop();
+        }
+        
+        return stack.length == 0;
+    }
 }
 
 console.log(new Solution().isBalanced('([])[]({})'))
 console.log(new Solution().isBalanced('([)]'))
+
+
+console.log(new Solution().isBalancedV2('([])[]({})'))
+console.log(new Solution().isBalancedV2('([)]'))
