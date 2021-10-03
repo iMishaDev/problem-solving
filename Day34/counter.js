@@ -32,8 +32,20 @@ class Solution {
 
 
     decode(text){
-
+        let decoded = '';
+        for(let letter of text){
+            if(!isNaN(letter)){
+                while(letter - 1){
+                    decoded += decoded[decoded.length -1]
+                    letter -= 1
+                }
+            } else {
+                decoded += letter
+            }
+        }
+        console.log(decoded)
     }
 }
 
 console.log(new Solution().encode('AAAABBBCCDAA'))
+console.log(new Solution().decode('A4B3C2D1A'))
