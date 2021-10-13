@@ -25,6 +25,12 @@ Constraints:
  */
 
 class Solution {
+
+/**
+ * My solution
+ * @param {Array} prices 
+ * @returns Integer 
+ */
     maxProfit(prices){
         let max = Number.MIN_VALUE;
         let profit = 0;
@@ -38,7 +44,29 @@ class Solution {
 
         return profit;
     }
+
+/**
+ * ref: NeetCode
+ * @param {Array} prices 
+ * @returns Integer 
+ */
+    maxProfit_v2(prices){
+        let max = 0;
+        let left = 0;
+        let right = 1;
+
+        while(right < prices.length){
+            if(prices[left] < prices[right]){
+                max = Math.max(prices[right] - prices[left], max);
+            } else left = right
+            right += 1
+        }
+        return max;
+    }
 }
 
 console.log(new Solution().maxProfit([7,1,5,3,6,4]))
 console.log(new Solution().maxProfit([7,6,4,3,1]))
+
+console.log(new Solution().maxProfit_v2([7,1,5,3,6,4]))
+console.log(new Solution().maxProfit_v2([7,6,4,3,1]))
