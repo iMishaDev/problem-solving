@@ -30,27 +30,34 @@ Submissions
 
 class Solution {
     maxProductSubarray(nums){
-        let product = 1;
-        let max = 0;
-        let start = 0;
+        let result = Math.max(...nums);
+        let max = 1;
         let end = 0;
+        let min = 1;
 
         while(end < nums.length){
-            product *= nums[end];
-
-            if(product <= 0){
-                product /= Math.max(nums[start], 1);
-                start =+ 1;
+            if(nums[end] === 0){
+                max = 1;
+                min = 1;
+                end += 1;
+                continue;
             }
+            let temp = max * nums[end];
+            max = Math.max(nums[end] * max, nums[end] * min, nums[end]);
+            min = Math.min(nums[end] * min, temp, nums[end]);
 
-            max = Math.max(max, product);
+            result = Math.max(result, max);
             end += 1;
         }
 
-        return max;
+        return result;
     }
 }
 
 
 console.log(new Solution().maxProductSubarray([2,3,-2,4]));
 console.log(new Solution().maxProductSubarray([-2,0,-1]));
+console.log(new Solution().maxProductSubarray([0,2]))
+console.log(new Solution().maxProductSubarray([-2,3,-4]))
+console.log(new Solution().maxProductSubarray([2,-5,-2,-4,3]))
+
