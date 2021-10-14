@@ -58,8 +58,8 @@ class Solution {
 
 
     min_v2Helper(nums, left, right, min){
-        if(right <= left) return min;
-        
+        if(right < left) return min;
+
         let mid = Math.floor((left + right) / 2)
         min = Math.min(min, nums[mid], nums[left])
         if(nums[mid]  >= nums[left])
@@ -76,3 +76,4 @@ console.log(new Solution().min([11,13,15,17]))
 console.log(new Solution().min_v2([3,4,5,1,2]))
 console.log(new Solution().min_v2( [4,5,6,7,0,1,2]))
 console.log(new Solution().min_v2([11,13,15,17]))
+console.log(new Solution().min_v2([1]))
