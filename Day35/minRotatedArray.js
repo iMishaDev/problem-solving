@@ -38,11 +38,41 @@ nums is sorted and rotated between 1 and n times.
  */
 
 class Solution {
+    /**
+     * O(n)
+     * @param {Array} nums 
+     * @returns Integer min value 
+     */
     min(nums){
         return Math.min(...nums)
+    }
+
+    /**
+     * O(log n)
+     * @param {Array} nums 
+     * @returns Integer min value 
+     */
+    min_v2(nums){
+        return this.min_v2Helper(nums, 0, nums.length - 1, Number.MAX_VALUE)
+    }
+
+
+    min_v2Helper(nums, left, right, min){
+        if(right <= left) return min;
+        
+        let mid = Math.floor((left + right) / 2)
+        min = Math.min(min, nums[mid], nums[left])
+        if(nums[mid]  >= nums[left])
+            return this.min_v2Helper(nums, mid + 1 , right, min);
+        else
+            return this.min_v2Helper(nums, left, mid, min);
     }
 }
 
 console.log(new Solution().min([3,4,5,1,2]))
 console.log(new Solution().min( [4,5,6,7,0,1,2]))
 console.log(new Solution().min([11,13,15,17]))
+
+console.log(new Solution().min_v2([3,4,5,1,2]))
+console.log(new Solution().min_v2( [4,5,6,7,0,1,2]))
+console.log(new Solution().min_v2([11,13,15,17]))

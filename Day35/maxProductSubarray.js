@@ -43,7 +43,7 @@ class Solution {
                 continue;
             }
             let temp = max * nums[end];
-            max = Math.max(nums[end] * max, nums[end] * min, nums[end]);
+            max = Math.max(nums[end] * max, nums[end] * min);
             min = Math.min(nums[end] * min, temp, nums[end]);
 
             result = Math.max(result, max);
