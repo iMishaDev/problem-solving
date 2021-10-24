@@ -16,6 +16,9 @@ class Solution {
     edit_distance_helper(word1, word2){
         if(word1.length === 0)
             return [word2, word2.length];
+        if(word2.length === 0){
+            return ['', word1.length];
+        }
 
         let [word, length] = this.edit_distance_helper(word1.slice(1), word2.slice(1));
 
@@ -24,3 +27,4 @@ class Solution {
 }
 
 console.log(new Solution().edit_distance('kitten', 'sitting'))
+console.log(new Solution().edit_distance('sitting', 'kitten'))
