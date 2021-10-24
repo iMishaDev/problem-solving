@@ -1,12 +1,9 @@
 class Solution {
 
     reverse(text){
-        return  text.split('').reverse().join('');
+        return text.split('').reverse().join('');
     }
 
-    is_palindrome(){
-
-    }
 
     check_palindrome(text){
         if(this.reverse(text) == text){
