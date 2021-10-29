@@ -19,16 +19,16 @@ class Solution {
 
 
     find_min_helper(nums, start, end, min){
-        if(start >= end)
+        if(start > end)
             return min;
+        if(nums[start] < nums[end])
+            return  Math.min(nums[start], min);
         
         let mid = Math.floor((start + end) / 2);
-
         if(nums[mid] >= nums[start])
-            return this.find_min_helper(nums, mid , end, Math.min(nums[mid], min))
+            return this.find_min_helper(nums, mid + 1, end, Math.min(nums[mid], min))
         return this.find_min_helper(nums, start, mid - 1, Math.min(nums[mid], min))
     }
 }
-
 
 console.log(new Solution().find_min([4,5,6,7,0,1,2]))
