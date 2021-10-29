@@ -33,8 +33,10 @@ class Solution {
                 continue;
             }
             let tempMax = max * number;
+            
             max = Math.max(max * number, min * number, number)
-            min = Math.max(tempMax, min * number, number)
+            min = Math.min(tempMax, min * number, number)
+
             result = Math.max(result, min, max)
             end += 1;
         }
