@@ -31,23 +31,23 @@ Output: -1
 
 class Solution {
     search(nums, target){
-        return this.search_helper(nums, 0, nums.length, target);
+        return this.search_helper(nums, 0, nums.length - 1, target);
     }
 
     search_helper(nums, start, end, target){
-        if(start >= end)
+        if(start > end)
             return -1;
         
         let mid = Math.floor((start + end)/2);
         if(nums[mid] === target)
             return mid;
-        
         if(nums[start] <= nums[mid]){
             if(target > nums[mid] || target < nums[start])
                 return this.search_helper(nums, mid + 1, end , target)
             else  return this.search_helper(nums, start, mid , target)
 
-        } else {
+        } 
+        else {
             if(target < nums[mid] || target > nums[end])
                 return this.search_helper(nums, start, mid - 1 , target)
             else  return this.search_helper(nums, mid + 1, end , target)
@@ -58,3 +58,5 @@ class Solution {
 console.log(new Solution().search([4,5,6,7,0,1,2], 0))
 console.log(new Solution().search([4,5,6,7,0,1,2], 3))
 console.log(new Solution().search([1], 0))
+console.log(new Solution().search([1], 1))
+console.log(new Solution().search([3, 1], 3))
