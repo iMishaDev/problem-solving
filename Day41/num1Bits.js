@@ -33,27 +33,9 @@ Explanation: The input binary string 11111111111111111111111111111101 has a tota
 
 class Solution {
     ham_weight(num){
-        if(num.length ==  0)
-            return 0;
-        return (num[0] & 1) + this.ham_weight(num.slice(1))
-    }
-
-    ham_weight_2(num){
         let res = 0;
-        num = parseInt(num, 2)
         while(num){
-            res += num % 2;
-            num = num >> 1
-        }
-
-        return res
-    }
-
-    ham_weight_3(num){
-        let res = 0;
-        num = parseInt(num, 2)
-        while(num){
-            num = num & ( num - 1)
+            num &=  num - 1
             res += 1;
         }
 
@@ -61,6 +43,4 @@ class Solution {
     }
 }
 
-console.log(new Solution().ham_weight('00000000000000000000000000001011', 1))
-console.log(new Solution().ham_weight_2('00000000000000000000000000001011', 1))
-console.log(new Solution().ham_weight_3('00000000000000000000000000001011', 1))
+console.log(new Solution().ham_weight(0b11111111111111111111111111111101))
