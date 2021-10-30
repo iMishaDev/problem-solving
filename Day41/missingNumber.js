@@ -59,12 +59,12 @@ class Solution {
     }
 
     get_missing_3(nums){
-        let sum1 = nums.length;
+        let sum = nums.length;
         for(let i = 0; i < nums.length; i++){
-            sum1 += (i - nums[i])
+            sum += (i - nums[i])
         }
         
-        return sum1;
+        return sum;
     }
 
     get_missing_4(nums){
