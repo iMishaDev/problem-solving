@@ -27,7 +27,7 @@ Output: 2
  */
 
 class Solution {
-    maxArea(nums){
+    max_area(nums){
         let area = 0;
         let max = 0;
         let height = 0;
@@ -42,6 +42,29 @@ class Solution {
 
         return max;
     }
+
+    max_area_2(nums){
+        let start = 0;
+        let end = nums.length - 1;
+        let area = 0;
+        let max = 0;
+        let height = 0;
+
+        while(end > -1){
+            height = Math.min(nums[start], nums[end]);
+            area = height * (end - start);
+            
+            max = Math.max(max, area);
+            if(nums[start] < nums[end])
+                start += 1;
+            else end -= 1;
+        }
+        return max;
+    }
 }
 
-console.log(new Solution().maxArea([1,8,6,2,5,4,8,3,7]))
+console.log(new Solution().max_area([1,8,6,2,5,4,8,3,7]))
+console.log(new Solution().max_area_2([1,8,6,2,5,4,8,3,7]))
+console.log(new Solution().max_area_2([4,3,2,1,4]))
+console.log(new Solution().max_area_2([1,2,1]))
+console.log(new Solution().max_area_2([1,1]))
