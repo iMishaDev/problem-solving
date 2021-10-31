@@ -37,10 +37,27 @@ class Solution {
         return word1[0] === word2[0] ?  this.find_lcs(word1.slice(1), word2.slice(1)) + 1: Math.max(this.find_lcs(word1.slice(1), word2),this.find_lcs(word1, word2.slice(1)))
     }
 
-    
+    find_lcs_dynamic_programming(word1, word2){
+        let matrix = new Array(word1.length + 1).fill(0).map((el) => new Array(word2.length + 1).fill(0))
+        for(let i = word1.length - 1; i > -1; i--){
+            for(let j = word2.length  - 1; j > -1; j--){
+                if(word1[i] === word2[j]){
+                    matrix[i][j] = 1 + matrix[i + 1][j + 1]
+                } else {
+                    matrix[i][j] = Math.max(matrix[i + 1][j], matrix[i][j + 1])
+                }
+
+            }
+        }
+        return matrix[0][0]
+    }
 }
 
 console.log(new Solution().find_lcs('abcde', 'ace'))
 console.log(new Solution().find_lcs('abc', 'abc'))
 console.log(new Solution().find_lcs('abc', 'def'))
 
+
+console.log(new Solution().find_lcs_dynamic_programming('abcde', 'ace'))
+console.log(new Solution().find_lcs_dynamic_programming('abc', 'abc'))
+console.log(new Solution().find_lcs_dynamic_programming('abc', 'def'))
