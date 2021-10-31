@@ -87,7 +87,7 @@ class Solution {
             }
         }
 
-        return calcs[amount]
+        return calcs[amount] !== amount + 1?   calcs[amount] :  - 1;
     }
 }
 
