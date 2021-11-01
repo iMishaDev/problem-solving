@@ -8,31 +8,33 @@ import { BinaryTreeNode } from "../helpers.js";
 
 class Solution {
     get_kth_smallest(root, k){
-        let stack = [root];
-        while(stack.length){
-            let current = stack.pop();
-            while(current.leftChild){
-                current = current.leftChild;
+        let stack = [];
+        let current = root
+    
+        while( stack){
+            while(current){
                 stack.push(current)
+                current = current.leftChild;
             }
-
             current = stack.pop();
+
 
             k -= 1
 
             if(!k){
-                return current;
+                return current.value;
             }
 
             current = current.rightChild
         }
     }
 }
-const tree1 = new BinaryTreeNode(1,
-                    new BinaryTreeNode(4, 
-                        new BinaryTreeNode(3,null),
-                        new BinaryTreeNode(2, null)),
-                    new BinaryTreeNode(5, 
-                        new BinaryTreeNode(4,null),
-                        new BinaryTreeNode(1, null)));
+const tree1 = new BinaryTreeNode(5,
+                    new BinaryTreeNode(3, 
+                        new BinaryTreeNode(2,null),
+                        new BinaryTreeNode(4, null)),
+                    new BinaryTreeNode(7, 
+                        new BinaryTreeNode(6,null),
+                        new BinaryTreeNode(10, null)));
+
 console.log(new Solution().get_kth_smallest(tree1, 2))
