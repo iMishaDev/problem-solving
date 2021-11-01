@@ -59,11 +59,6 @@ class Solution {
 
         return longest_substring;
     }
-
-    valid_palindrome(text, start, end){
-        if(start >= end) return true
-        return text[start] === text[end] && this.valid_palindrome(text, start + 1, end - 1)
-    }
 }
 
 console.log(new Solution().get_longest('babad'))
