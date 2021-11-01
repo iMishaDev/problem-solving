@@ -32,6 +32,7 @@ const tree2 = new BinaryTreeNode(5,
                         new BinaryTreeNode(6,null),
                         new BinaryTreeNode(10, null)));
 
-
-console.log(new Solution().is_valid(tree1, Number.MIN_VALUE, Number.MAX_VALUE))
-console.log(new Solution().is_valid(tree2, Number.MIN_VALUE, Number.MAX_VALUE))
+const tree3 = new BinaryTreeNode(0);
+console.log(new Solution().is_valid(tree1,  Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY))
+console.log(new Solution().is_valid(tree2,  Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY))
+console.log(new Solution().is_valid(tree3, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY))
