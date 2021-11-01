@@ -34,10 +34,11 @@ class Solution {
         let min_sub = 0;
 
         while(end < text.length){
-            while(sheet.get(text[end])){
+            while(sheet.has(text[end])){
                 sheet.delete(text[start])
                 start += 1;
-            } 
+            }
+
             sheet.set(text[end], 1);
             min_sub = Math.max(min_sub, (end - start) + 1)
 
