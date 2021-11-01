@@ -38,7 +38,6 @@ class Solution {
                 sheet.delete(text[start])
                 start += 1;
             } 
-            console.log(object)
             sheet.set(text[end], 1);
             min_sub = Math.max(min_sub, (end - start) + 1)
 
