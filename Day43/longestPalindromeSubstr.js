@@ -32,7 +32,7 @@ class Solution {
         while(end < text.length){
             let left = end;
             let right = end;
-            while(left > 0 && right < text.length && text[left] === text[right]){
+            while(left => 0 && right <= text.length && text[left] === text[right]){
                 if(right - left + 1 > substring_Length){
                     substring_Length = right - left + 1
                     longest_substring = text.slice(left, right + 1);
@@ -45,7 +45,7 @@ class Solution {
 
             left = end;
             right = end + 1;
-            while(left > 0 && right < text.length && text[left] === text[right]){
+            while(left >= 0 && right <= text.length && text[left] === text[right]){
                 if(right - left + 1 > substring_Length){
                     substring_Length = right - left + 1
                     longest_substring = text.slice(left, right + 1);
@@ -65,3 +65,4 @@ console.log(new Solution().get_longest('babad'))
 console.log(new Solution().get_longest('cbbd'))
 console.log(new Solution().get_longest('a'))
 console.log(new Solution().get_longest('ac'))
+console.log(new Solution().get_longest('bb'))
