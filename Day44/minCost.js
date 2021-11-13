@@ -42,9 +42,11 @@ class Solution {
 
     find_min_cost_helper(days, costs){
         
-        return (function find_min_cost_internal(day){
+        return (function find_min_cost_internal(day, cache){
             if(day >= days.length)
                 return 0;
+            if(cache[day])
+                return cache[day];
 
             let min = Number.MAX_VALUE;
             for(const [i, cost_days] of [1, 7, 30].entries()){
@@ -53,12 +55,11 @@ class Solution {
                     d += 1;
                 }
 
-                min = Math.min(min, costs[i] + find_min_cost_internal(d));
+                min = Math.min(min, costs[i] + find_min_cost_internal(d, cache));
             }
-
-            return min;
-        }(0))
-        
+            cache[day] = min;
+            return cache[day];
+        }(0, {}))
     }
 }
 
